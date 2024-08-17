@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Online Coffee Shop App</string>
+    <string name="get_started">Get Started</string>
+    <string name="started">Started</string>
+    <string name="find_the_best_coffe_nfor_you">Find the best coffe\nfor you</string>
+    <string name="setting">Setting</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_anything">Search anything...</string>
+    <string name="category">Category</string>
+</resources>
