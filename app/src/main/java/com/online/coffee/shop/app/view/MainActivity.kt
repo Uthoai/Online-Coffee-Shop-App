@@ -1,5 +1,6 @@
 package com.online.coffee.shop.app.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
@@ -32,6 +33,11 @@ class MainActivity : BaseActivity() {
         navController = findNavController(R.id.fragment_Container)
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setupWithNavController(navController)
+
+        binding.fabCart.setOnClickListener {
+            val intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
