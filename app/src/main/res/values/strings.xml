@@ -15,4 +15,13 @@
     <string name="_20_00">$20.00</string>
     <string name="extra_text">extra text</string>
     <string name="payment">Payment</string>
+    <string name="cappuccino">Cappuccino</string>
+    <string name="_24_0">$24.0</string>
+    <string name="desc">desc</string>
+    <string name="coffee_size">Coffee Size</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="_1">1</string>
+    <string name="add">+</string>
+    <string name="minus">-</string>
+    <string name="todo">TODO</string>
 </resources>

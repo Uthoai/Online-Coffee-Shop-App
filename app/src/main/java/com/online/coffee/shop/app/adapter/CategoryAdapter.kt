@@ -24,7 +24,10 @@ class CategoryAdapter(private val categoryList: List<CategoryModel>) :
         return categoryList.size
     }
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, @SuppressLint("RecyclerView") position: Int) {
+    override fun onBindViewHolder(
+        holder: CategoryViewHolder,
+        @SuppressLint("RecyclerView") position: Int
+    ) {
         categoryList[position].let {
             holder.binding.textCategory.text = it.title
 
@@ -37,7 +40,7 @@ class CategoryAdapter(private val categoryList: List<CategoryModel>) :
 
             if (selectedItem == position) {
                 holder.binding.root.setBackgroundResource(R.drawable.orange_bg)
-            } else{
+            } else {
                 holder.binding.root.setBackgroundResource(R.drawable.edittext_bg)
             }
         }

@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.online.coffee.shop.app.model.CategoryModel
 import com.online.coffee.shop.app.model.OfferModel
-import com.online.coffee.shop.app.model.PopularItemModel
+import com.online.coffee.shop.app.model.ItemsModel
 
 class HomeViewModel: ViewModel() {
     private val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference
@@ -18,8 +18,8 @@ class HomeViewModel: ViewModel() {
     private val _categories = MutableLiveData<List<CategoryModel>>()
     val categories: LiveData<List<CategoryModel>> get() = _categories
 
-    private val _popularItems = MutableLiveData<List<PopularItemModel>>()
-    val popularItems: LiveData<List<PopularItemModel>> get() = _popularItems
+    private val _popularItems = MutableLiveData<List<ItemsModel>>()
+    val popularItems: LiveData<List<ItemsModel>> get() = _popularItems
 
     private val _offers = MutableLiveData<List<OfferModel>>()
     val offers: LiveData<List<OfferModel>> get() = _offers
@@ -50,9 +50,9 @@ class HomeViewModel: ViewModel() {
     private fun fetchPopularItems() {
         databaseReference.child("Items").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val itemList = mutableListOf<PopularItemModel>()
+                val itemList = mutableListOf<ItemsModel>()
                 for (itemSnapshot in snapshot.children) {
-                    val item = itemSnapshot.getValue(PopularItemModel::class.java)
+                    val item = itemSnapshot.getValue(ItemsModel::class.java)
                     item?.let { itemList.add(it) }
                 }
                 _popularItems.value = itemList
