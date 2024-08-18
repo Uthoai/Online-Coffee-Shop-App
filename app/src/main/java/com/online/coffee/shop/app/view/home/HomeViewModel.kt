@@ -9,34 +9,77 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.online.coffee.shop.app.model.CategoryModel
+import com.online.coffee.shop.app.model.OfferModel
+import com.online.coffee.shop.app.model.PopularItemModel
 
 class HomeViewModel: ViewModel() {
+    private val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     private val _categories = MutableLiveData<List<CategoryModel>>()
     val categories: LiveData<List<CategoryModel>> get() = _categories
 
-    private val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("Category")
+    private val _popularItems = MutableLiveData<List<PopularItemModel>>()
+    val popularItems: LiveData<List<PopularItemModel>> get() = _popularItems
+
+    private val _offers = MutableLiveData<List<OfferModel>>()
+    val offers: LiveData<List<OfferModel>> get() = _offers
 
     init {
         fetchCategories()
+        fetchPopularItems()
+        fetchOffers()
     }
 
     private fun fetchCategories() {
-        database.addValueEventListener(object : ValueEventListener {
+        databaseReference.child("Category").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val categoryList = mutableListOf<CategoryModel>()
                 for (categorySnapshot in snapshot.children) {
                     val category = categorySnapshot.getValue(CategoryModel::class.java)
-                    if (category != null) {
-                        categoryList.add(category)
-                    }
+                    category?.let { categoryList.add(it) }
                 }
                 _categories.value = categoryList
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Handle possible errors.
+                // Handle error
             }
         })
     }
+
+    private fun fetchPopularItems() {
+        databaseReference.child("Items").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val itemList = mutableListOf<PopularItemModel>()
+                for (itemSnapshot in snapshot.children) {
+                    val item = itemSnapshot.getValue(PopularItemModel::class.java)
+                    item?.let { itemList.add(it) }
+                }
+                _popularItems.value = itemList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    private fun fetchOffers() {
+        databaseReference.child("Offers").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val offerList = mutableListOf<OfferModel>()
+                for (offerSnapshot in snapshot.children) {
+                    val offer = offerSnapshot.getValue(OfferModel::class.java)
+                    offer?.let { offerList.add(it) }
+                }
+                _offers.value = offerList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+
 }

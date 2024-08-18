@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/home"
+        android:icon="@drawable/bottom_btn1"/>
+    <item
+        android:id="@+id/profileFragment"
+        android:title="@string/profile"
+        android:icon="@drawable/bottom_btn2"/>
+    <item
+        android:id="@+id/emptyItem"
+        android:title=""/>
+    <item
+        android:id="@+id/paymentFragment"
+        android:title="@string/payment"
+        android:icon="@drawable/bottom_btn3"/>
+    <item
+        android:id="@+id/settingFragment"
+        android:title="@string/setting"
+        android:icon="@drawable/bottom_btn4"/>
+</menu>

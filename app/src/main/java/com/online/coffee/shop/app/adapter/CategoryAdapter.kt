@@ -8,7 +8,7 @@ import com.online.coffee.shop.app.R
 import com.online.coffee.shop.app.databinding.CategoryItemLayoutBinding
 import com.online.coffee.shop.app.model.CategoryModel
 
-class CategoryAdapter(val categoryList: List<CategoryModel>) :
+class CategoryAdapter(private val categoryList: List<CategoryModel>) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private var selectedItem = -1

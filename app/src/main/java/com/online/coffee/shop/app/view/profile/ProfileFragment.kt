@@ -1,4 +1,4 @@
-package com.online.coffee.shop.app
+package com.online.coffee.shop.app.view.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
